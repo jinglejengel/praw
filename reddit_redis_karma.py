@@ -6,7 +6,7 @@ import redis
 import praw
 
 # Open up a redis and reddit connection
-db = redis.Redis(host='162.242.149.158')
+db = redis.Redis(host='localhost')
 conn = praw.Reddit('Reddit/redis parsing by /u/joeskyyy')
 
 # Limit how many subreddits to return
