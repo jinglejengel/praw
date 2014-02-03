@@ -4,6 +4,7 @@
 
 import redis
 import praw
+import json
 
 # Open up a redis and reddit connection
 db = redis.Redis(host='localhost')
@@ -19,11 +20,18 @@ user_name = "joeskyyy"
 user = conn.get_redditor(user_name)
 submitted = user.get_submitted(sort='top', limit=limit)
 
+#db.rpush("karma", json.loads(submitted))
 
 # For each subreddit the user has submitted to (limited by limit) store the subreddit name and karma
+userlist = []
+
 for sub in submitted:
-	subreddit = sub.subreddit.display_name
-	db.rpush(user_name, '%s : %s' % (subreddit, sub.score))
+	karma = {}
+	karma['subreddit'] = sub.subreddit.display_name
+	karma['karma'] = sub.score
+	userlist.append(karma)
+
+db.rpush("karma", json.dumps(userlist))
 
 # Print the stored values
-print db.lrange(user_name, 0, -1)
+print db.lrange("karma", 0, -1)
