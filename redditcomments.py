@@ -5,7 +5,6 @@
 #
 # Written by Joe Engel
 
-
 import pymongo
 import praw
 import time

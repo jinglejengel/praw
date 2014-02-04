@@ -9,8 +9,6 @@ import redis
 import praw
 import json
 
-
-
 # Open a redis DB connection
 db = redis.Redis(host='localhost')
 

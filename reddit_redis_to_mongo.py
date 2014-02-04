@@ -22,5 +22,3 @@ while True:
 	comment = json.loads(comment)
 	m.comments.save(comment)
 	print "Inserted commentID %s" % comment['_id']
-	
-	

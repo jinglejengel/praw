@@ -1,6 +1,7 @@
 #!/usr/bin/env/python
-
+#
 # Store a given users top 10 subreddits by karma 
+# Written by: Joe Engel
 
 import redis
 import praw
@@ -19,8 +20,6 @@ user_name = "joeskyyy"
 # Retrieve the user obv and their submitted subreddits sorted by top scores
 user = conn.get_redditor(user_name)
 submitted = user.get_submitted(sort='top', limit=limit)
-
-#db.rpush("karma", json.loads(submitted))
 
 # For each subreddit the user has submitted to (limited by limit) store the subreddit name and karma
 userlist = []
