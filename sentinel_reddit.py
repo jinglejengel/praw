@@ -41,7 +41,7 @@ while True:
 			while not succeeded:
 				try:
 					succeeded = master.rpush("comments", json.dumps(post))
-				except redis.exceptions.ConnectionError:
+				except (redis.exceptions.ResponseError, redis.exceptions.ConnectionError):
 					master = failover()
 					continue
 			print "Inserted commentID: %s" % comment.id
