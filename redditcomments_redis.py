@@ -3,7 +3,7 @@
 # Store reddit comments into a redis DB using praw and redis-py
 #
 # Written by Joe Engel
-# Additional Contributers: Mark Lessel
+# Additional Contributers: Mark Lessel - https://github.com/magglass1
 
 import redis
 import praw
