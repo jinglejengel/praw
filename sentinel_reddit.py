@@ -12,7 +12,7 @@ import json
 import time
 
 # Open a redis DB connection
-db = Sentinel([('localhost', 26379), ('localhost',26380)], socket_timeout=0.1)
+db = Sentinel([('x.x.x.x', 26379), ('x.x.x.x', 26379), ('x.x.x.x', 26379)], socket_timeout=0.1)
 master = db.master_for('mymaster', socket_timeout=0.1)
 
 # Create the reddit object, and pull comment stream from http://reddit.com/r/all/comments
@@ -41,7 +41,7 @@ while True:
 			while not succeeded:
 				try:
 					succeeded = master.rpush("comments", json.dumps(post))
-				except redis.exceptions.ResponseError:
+				except redis.exceptions.ConnectionError:
 					master = failover()
 					continue
 			print "Inserted commentID: %s" % comment.id
