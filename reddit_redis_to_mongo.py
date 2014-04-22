@@ -3,7 +3,7 @@
 # Pulls information from a redis queue created from redditcomments_redis.py to store into MongoDB
 #
 # Written by: Joe Engel
-# Additional Contributers: Mark Lessel
+# Additional Contributers: Mark Lessel - https://github.com/magglass1
 
 import redis
 import pymongo
